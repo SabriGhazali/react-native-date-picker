@@ -9,7 +9,7 @@ export default class DatePickerIOS extends React.Component {
 
   componentDidUpdate() {
     if (this.props.date) {
-      const propsTimeStamp = this.props.date.getTime()
+      const propsTimeStamp = this.props.date.valueOf()
       if (this._picker) {
         this._picker.setNativeProps({
           date: propsTimeStamp,
@@ -35,13 +35,13 @@ export default class DatePickerIOS extends React.Component {
           this._picker = picker
         }}
         style={[styles.datePickerIOS, props.style]}
-        date={props.date ? props.date.getTime() : undefined}
+        date={props.date && props.date.valueOf()}
         locale={props.locale ? props.locale : undefined}
         maximumDate={
-          props.maximumDate ? props.maximumDate.getTime() : undefined
+          props.maximumDate && props.maximumDate.valueOf()
         }
         minimumDate={
-          props.minimumDate ? props.minimumDate.getTime() : undefined
+          props.minimumDate && props.minimumDate.valueOf()
         }
         mode={props.mode}
         minuteInterval={props.minuteInterval}
